@@ -1,6 +1,8 @@
 // This program calculates the shipping cost of a package 
 
 #include <iostream>
+#include <cmath>
+#include <iomanip>
 using namespace std;
 
 int main()
@@ -8,6 +10,8 @@ int main()
     double weight;
     double distance;
     double rate;
+    double shippingUnits;
+    double totalCharge;
 
     cout << "Enter the package weight in kilograms: "; 
     cin >> weight;
@@ -37,7 +41,11 @@ int main()
         rate = 4.80;
     }
 
-    cout << "Shipping rate: $" << rate << endl;
+    shippingUnits = ceil(distance / 500.0);
+    totalCharge = rate * shippingUnits;
+
+    cout << fixed << setprecision(2);
+    cout << "Total shipping charge: $" << totalCharge << endl;
 
     return 0;
 }
